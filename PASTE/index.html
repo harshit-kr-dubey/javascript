@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodePaste - Share Your Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-paste"></i> CodePaste
+            </div>
+            <div class="theme-switch">
+                <label for="theme-toggle">Dark Mode</label>
+                <input type="checkbox" id="theme-toggle">
+            </div>
+        </header>
+        
+        <div id="create-view">
+            <div class="success-message" id="success-message">
+                Your paste has been created! URL: <span id="paste-url"></span>
+            </div>
+            
+            <form id="paste-form" class="create-paste">
+                <div class="form-group">
+                    <label for="paste-title">Title (Optional)</label>
+                    <input type="text" id="paste-title" class="form-control" placeholder="Untitled Paste">
+                </div>
+                
+                <div class="form-group">
+                    <label for="code-editor">Content</label>
+                    <div class="editor-container">
+                        <textarea id="code-editor" class="form-control" placeholder="Paste your code or text here..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="options-container">
+                    <div class="form-group">
+                        <label for="syntax-highlight">Syntax Highlighting</label>
+                        <select id="syntax-highlight" class="form-control">
+                            <option value="plaintext">Plain Text</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="php">PHP</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="sql">SQL</option>
+                            <option value="json">JSON</option>
+                            <option value="xml">XML</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expiration">Expiration</label>
+                        <select id="expiration" class="form-control">
+                            <option value="never">Never</option>
+                            <option value="10m">10 Minutes</option>
+                            <option value="1h">1 Hour</option>
+                            <option value="1d">1 Day</option>
+                            <option value="1w">1 Week</option>
+                            <option value="1m">1 Month</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="visibility">Visibility</label>
+                        <select id="visibility" class="form-control">
+                            <option value="public">Public</option>
+                            <option value="unlisted">Unlisted</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Create Paste
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="view-paste" style="display: none;">
+            <div class="paste-metadata">
+                <div class="paste-info">
+                    <span id="paste-title-display">Untitled Paste</span> &bull; 
+                    <span id="paste-date">Created just now</span>
+                </div>
+                <div class="paste-expire">
+                    <span id="paste-expiration">Expires: Never</span>
+                </div>
+            </div>
+            
+            <div class="paste-content">
+                <div class="paste-action-bar">
+                    <div class="language-label">
+                        <i class="fas fa-code"></i> <span id="language-display">Plain Text</span>
+                    </div>
+                    <div class="actions">
+                        <button class="action-btn" id="copy-btn">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                        <button class="action-btn" id="raw-btn">
+                            <i class="fas fa-file-alt"></i> Raw
+                        </button>
+                        <button class="action-btn" id="new-paste-btn">
+                            <i class="fas fa-plus"></i> New Paste
+                        </button>
+                    </div>
+                </div>
+                <pre><code id="paste-code-display"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
